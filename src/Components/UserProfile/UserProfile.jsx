@@ -10,10 +10,20 @@ import {
   Box,
 } from "@chakra-ui/react";
 import { MdOutlineLogout } from "react-icons/md";
+import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
+import { logoutUser } from "../../Redux/Slices/AuthSlice";
 
 export const UserProfile = ({ onOpenProfile }) => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+
+  const logoutHandler = () => {
+    dispatch(logoutUser());
+    navigate("/");
+    toast.success("logout successfully");
+  };
   return (
     <Flex
       w="100%"
@@ -47,7 +57,7 @@ export const UserProfile = ({ onOpenProfile }) => {
             p="1.5rem"
             colorScheme="red.400"
             _focus={{ borderColor: "red.900" }}
-            onClick={() => navigate("/")}
+            onClick={logoutHandler}
           />
         </Tooltip>
       </Flex>
