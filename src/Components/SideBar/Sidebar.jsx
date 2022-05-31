@@ -14,10 +14,19 @@ import { FaRegBookmark } from "react-icons/fa";
 import { CgProfile } from "react-icons/cg";
 import { FiLogOut } from "react-icons/fi";
 import { useLocation, useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { logoutUser } from "../../Redux/Slices/AuthSlice";
+import { toast } from "react-toastify";
 
 export const Sidebar = ({ onOpen }) => {
   const { pathname } = useLocation();
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const logoutHandler = () => {
+    dispatch(logoutUser());
+    navigate("/");
+    toast.success("Logout Successfully");
+  };
   return (
     <Box
       position="sticky"
@@ -113,7 +122,7 @@ export const Sidebar = ({ onOpen }) => {
             borderLeftColor={`${pathname === "/" ? "blue.700" : null}`}
             my="5"
             bg={`${pathname === "/" ? "gray.200" : null}`}
-            onClick={() => navigate("/")}
+            onClick={logoutHandler}
             color={`${pathname === "/" ? "blue.600" : "black"}`}
             _hover={{ bg: "gray.100", color: "blue.600" }}
           >
