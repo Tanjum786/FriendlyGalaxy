@@ -75,7 +75,7 @@ export const Login = () => {
             borderBottomColor="blue.600"
             color="blue.600"
           >
-            GalaxyFriendly
+            FriendlyGalaxy
           </Heading>
 
           <Heading fontFamily="cursive">Login</Heading>

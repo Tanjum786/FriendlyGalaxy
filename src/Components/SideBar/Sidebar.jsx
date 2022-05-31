@@ -39,7 +39,7 @@ export const Sidebar = ({ onOpen }) => {
     >
       <Flex>
         <Heading fontSize="5xl" p="3" fontFamily="cursive" color="blue.600">
-          GalaxyFriendly
+        FriendlyGalaxy
         </Heading>
       </Flex>
       <Flex justifyContent="center">

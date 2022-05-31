@@ -86,7 +86,7 @@ export const Signup = () => {
             borderBottomColor="blue.600"
             color="blue.600"
           >
-            GalaxyFriendly
+           FriendlyGalaxy
           </Heading>
 
           <Heading fontFamily="cursive">Signup</Heading>
