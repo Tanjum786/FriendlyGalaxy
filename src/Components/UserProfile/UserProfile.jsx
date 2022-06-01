@@ -7,10 +7,9 @@ import {
   IconButton,
   Tooltip,
   Link,
-  Box,
 } from "@chakra-ui/react";
 import { MdOutlineLogout } from "react-icons/md";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { logoutUser } from "../../Redux/Slices/AuthSlice";
@@ -18,15 +17,33 @@ import { logoutUser } from "../../Redux/Slices/AuthSlice";
 export const UserProfile = ({ onOpenProfile }) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const { posts } = useSelector((state) => state.post);
+  const { user } = useSelector((state) => state.auth);
+
+  const {
+    firstName,
+    lastName,
+    username,
+    profile,
+    link,
+    bio,
+    followers,
+    following,
+  } = user;
 
   const logoutHandler = () => {
     dispatch(logoutUser());
     navigate("/");
     toast.success("logout successfully");
   };
+
+  const userpost = posts.filter(
+    (eachpost) => eachpost.username === user.username
+  );
+
   return (
     <Flex
-      w="100%"
+      w="60rem"
       mt="2rem"
       p="2rem"
       flexDirection="column"
@@ -36,9 +53,17 @@ export const UserProfile = ({ onOpenProfile }) => {
       zIndex="2"
       borderRadius="0.5rem"
     >
-      <Avatar name="avatar" boxSize="15rem" src="https://bit.ly/dan-abramov" />
-      <Heading as="h5">Adarsha Balika</Heading>
-      <Text fontSize="2xl">@adarshabalika</Text>
+      <Avatar
+        name="avatar"
+        boxSize="15rem"
+        src={
+          !profile
+            ? "https://t4.ftcdn.net/jpg/04/10/43/77/360_F_410437733_hdq4Q3QOH9uwh0mcqAhRFzOKfrCR24Ta.jpg"
+            : profile
+        }
+      />
+      <Heading as="h5">{`${firstName} ${lastName}`}</Heading>
+      <Text fontSize="2xl">@{username}</Text>
       <Flex gap="0.5rem">
         <Button
           bg="blue.500"
@@ -61,7 +86,7 @@ export const UserProfile = ({ onOpenProfile }) => {
           />
         </Tooltip>
       </Flex>
-      <Text fontSize="1.5rem">I am Front-end developer</Text>
+      <Text fontSize="1.5rem">{bio}</Text>
       <Link
         href="https://portfolio-tanjum786.netlify.app/"
         isExternal
@@ -69,12 +94,12 @@ export const UserProfile = ({ onOpenProfile }) => {
         fontWeight="bold"
         fontSize="1.4rem"
       >
-        https://portfolio-tanjum786.netlify.app/
+        {link}
       </Link>
       <Flex gap="2rem">
         <Flex flexDirection="column" alignItems="center">
           <Heading as="h3" size="lg">
-            0
+            {followers.length}
           </Heading>
           <Text fontSize="xl" fontWeight="bold">
             Followers
@@ -82,7 +107,7 @@ export const UserProfile = ({ onOpenProfile }) => {
         </Flex>
         <Flex flexDirection="column" alignItems="center">
           <Heading as="h3" size="lg">
-            0
+            {userpost.length}
           </Heading>
           <Text fontSize="xl" fontWeight="bold">
             Posts
@@ -90,7 +115,7 @@ export const UserProfile = ({ onOpenProfile }) => {
         </Flex>
         <Flex flexDirection="column" alignItems="center">
           <Heading as="h3" size="lg">
-            0
+            {following.length}
           </Heading>
           <Text fontSize="xl" fontWeight="bold">
             Following
