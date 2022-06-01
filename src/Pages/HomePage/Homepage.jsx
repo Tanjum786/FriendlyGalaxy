@@ -6,18 +6,29 @@ import {
   IconButton,
   useDisclosure,
   Avatar,
+  Heading,
 } from "@chakra-ui/react";
-import React from "react";
+import React, { useEffect } from "react";
 import { BsFillPlusCircleFill } from "react-icons/bs";
+import { useDispatch, useSelector } from "react-redux";
 import {
   Sidebar,
   UserfollowedSidebar,
   PostModal,
   PostCard,
 } from "../../Components";
+import { getpost } from "../../Redux/thunks";
 
 export const Homepage = () => {
   const { isOpen, onClose, onOpen } = useDisclosure();
+  const { posts, status } = useSelector((state) => state.post);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    if (status === "idel") {
+      dispatch(getpost());
+    }
+  }, [status, posts, dispatch]);
   return (
     <>
       <PostModal isOpen={isOpen} onClose={onClose} />
@@ -46,7 +57,13 @@ export const Homepage = () => {
               />
             </Flex>
           </Box>
-          <PostCard onOpen={onOpen} />
+          {posts?.length ? (
+            posts.map((post) => {
+              return <PostCard onOpen={onOpen} key={post._id} post={post} />;
+            })
+          ) : (
+            <Heading color="gray.400" textAlign="center">Lodding.....</Heading>
+          )}
         </Flex>
         <UserfollowedSidebar />
       </Flex>
