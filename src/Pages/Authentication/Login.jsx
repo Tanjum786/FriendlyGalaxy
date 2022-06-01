@@ -30,7 +30,7 @@ export const Login = () => {
     e.preventDefault();
     setLoginuser(() => ({
       ...username,
-      username: "tanju",
+      username: "tanjum",
       password: "tanjum123",
     }));
   };
@@ -134,7 +134,7 @@ export const Login = () => {
                 _active={{ bg: "whiteAlpha.600", color: "blackAlpha.900" }}
                 onClick={guestLoginHandler}
               >
-                Guest Login
+              Enter Guest Credentials
               </Button>
               <Button
                 w="100%"
