@@ -25,10 +25,24 @@ import { FaEdit } from "react-icons/fa";
 import { MdDelete } from "react-icons/md";
 import { AiOutlineHeart, AiFillHeart } from "react-icons/ai";
 import { useDispatch, useSelector } from "react-redux";
-import { addToBookmark, dislikepost, likepost, removeBookmark } from "../../Redux/thunks";
+import {
+  addToBookmark,
+  dislikepost,
+  likepost,
+  removeBookmark,
+} from "../../Redux/thunks";
 
 export const PostCard = ({ onOpen, post }) => {
-  const { firstName, lastName, content, likes, profile, username, _id } = post;
+  const {
+    firstName,
+    lastName,
+    content,
+    likes,
+    profile,
+    username,
+    _id,
+    createdAt,
+  } = post;
   const dispatch = useDispatch();
   const { token, user } = useSelector((store) => store.auth);
   const { bookmarks } = useSelector((store) => store.post);
@@ -43,7 +57,7 @@ export const PostCard = ({ onOpen, post }) => {
 
   const bookmarkHadler = () => {
     if (isBookmarked) {
-      dispatch(removeBookmark({token,_id}))
+      dispatch(removeBookmark({ token, _id }));
     } else {
       dispatch(addToBookmark({ token, _id }));
     }
@@ -64,7 +78,7 @@ export const PostCard = ({ onOpen, post }) => {
             <Text fontSize="xl" color="gray.600">
               @{username}
             </Text>
-            <Text fontWeight="bold">2020</Text>
+            <Text fontWeight="bold">{createdAt}</Text>
           </Flex>
         </Flex>
         {user.username === username ? (
@@ -144,7 +158,15 @@ export const PostCard = ({ onOpen, post }) => {
         </Flex>
       </Flex>
       <Flex mt="1.5rem">
-        <Avatar name="avatar" size="md" src={!user.profile?"https://t4.ftcdn.net/jpg/04/10/43/77/360_F_410437733_hdq4Q3QOH9uwh0mcqAhRFzOKfrCR24Ta.jpg":user.profile} />
+        <Avatar
+          name="avatar"
+          size="md"
+          src={
+            !user.profile
+              ? "https://t4.ftcdn.net/jpg/04/10/43/77/360_F_410437733_hdq4Q3QOH9uwh0mcqAhRFzOKfrCR24Ta.jpg"
+              : user.profile
+          }
+        />
         <InputGroup>
           <Input
             placeholder="write your comment"
