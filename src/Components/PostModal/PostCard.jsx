@@ -67,7 +67,7 @@ export const PostCard = ({ onOpen, post }) => {
   };
 
   return (
-    <Box bg="gray.200" borderRadius="0.5rem" p="1.5rem" w="100%">
+    <Box bg="gray.200" borderRadius="0.5rem" p="1.5rem" w="60rem">
       <Flex justifyContent="space-between">
         <Flex gap="2rem">
           <Avatar name="avatar" size="xl" src={profile} />
