@@ -1,4 +1,4 @@
-import { Flex, Heading, useDisclosure } from "@chakra-ui/react";
+import { Box, Flex, Heading, useDisclosure } from "@chakra-ui/react";
 import React from "react";
 import { useSelector } from "react-redux";
 import {
@@ -21,29 +21,31 @@ export const BookMark = () => {
       <PostModal isOpen={isOpen} onClose={onClose} />
       <Flex flexWrap="wrap" justifyContent="space-between" mr="2rem">
         <Sidebar onOpen={onOpen} />
-        <Flex
-          w="45%"
-          paddingTop="3rem"
-          flexDirection="column"
-          gap="2rem"
-          alignItems="center"
-        >
-          {filterBookmarks.length !== 0 ? (
-            filterBookmarks.map((bookmarkPost) => {
-              return (
-                <PostCard
-                  onOpen={onOpen}
-                  post={bookmarkPost}
-                  key={bookmarkPost._id}
-                />
-              );
-            })
-          ) : (
-            <Heading color="gray.500">
-              Post are not added to Bookmark yet
-            </Heading>
-          )}
-        </Flex>
+        <Box>
+          <Flex
+            w="60rem"
+            paddingTop="3rem"
+            flexDirection="column"
+            gap="2rem"
+            alignItems="center"
+          >
+            {filterBookmarks.length !== 0 ? (
+              filterBookmarks.map((bookmarkPost) => {
+                return (
+                  <PostCard
+                    onOpen={onOpen}
+                    post={bookmarkPost}
+                    key={bookmarkPost._id}
+                  />
+                );
+              })
+            ) : (
+              <Heading color="gray.500">
+                Post are not added to Bookmark yet
+              </Heading>
+            )}
+          </Flex>
+        </Box>
         <UserfollowedSidebar />
       </Flex>
     </>

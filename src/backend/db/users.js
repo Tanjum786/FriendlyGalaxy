@@ -26,7 +26,7 @@ export const users = [
     lastName: "Dodds",
     password: "kent123",
     profile:
-      "https://i.pinimg.com/originals/72/e7/98/72e7982f686ed5ff4ff4e2f9e2fa09db.jpg",
+      "https://thumbs.dreamstime.com/b/businessman-icon-image-male-avatar-profile-vector-glasses-beard-hairstyle-179728610.jpg",
     createdAt: 2021,
     updatedAt: formatDate(),
     bio: "I am Front-end developer",
@@ -39,7 +39,7 @@ export const users = [
     lastName: "Adebayo",
     password: "segun123",
     profile:
-      "https://i.pinimg.com/originals/72/e7/98/72e7982f686ed5ff4ff4e2f9e2fa09db.jpg",
+      "https://bit.ly/code-beast",
     createdAt: 2021,
     updatedAt: formatDate(),
     bio: "I am Front-end developer",
@@ -52,7 +52,7 @@ export const users = [
     lastName: "Nwamba",
     password: "josef123",
     profile:
-      "https://i.pinimg.com/originals/72/e7/98/72e7982f686ed5ff4ff4e2f9e2fa09db.jpg",
+    "https://i.pinimg.com/originals/72/e7/98/72e7982f686ed5ff4ff4e2f9e2fa09db.jpg",
     createdAt: 2021,
     updatedAt: formatDate(),
     bio: "I am Front-end developer",
@@ -65,7 +65,7 @@ export const users = [
     lastName: "Sha",
     password: "shivi123",
     profile:
-      "https://i.pinimg.com/originals/72/e7/98/72e7982f686ed5ff4ff4e2f9e2fa09db.jpg",
+    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRUpXPhFj_GOReC0bkV7ZbkUR9FB7NnOyHgUSe_m9q7AyPZUmHqQfCPUYJy2grXOAHQ6tI&usqp=CAU",
     createdAt: 2021,
     updatedAt: formatDate(),
     bio: "I am Front-end developer",
