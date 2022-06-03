@@ -32,6 +32,7 @@ import {
   likepost,
   removeBookmark,
 } from "../../Redux/thunks";
+import { toast } from "react-toastify";
 
 export const PostCard = ({ onOpen, post, setEditpost }) => {
   const {
@@ -68,6 +69,7 @@ export const PostCard = ({ onOpen, post, setEditpost }) => {
 
   const deletePostHandler = () => {
     dispatch(deletePost({ token, _id }));
+    toast.info("post deleted")
   };
   const editPostHandler = () => {
     setEditpost(post);

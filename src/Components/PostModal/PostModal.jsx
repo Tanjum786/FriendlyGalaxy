@@ -31,6 +31,7 @@ export const PostModal = ({ isOpen, onClose, editPosts }) => {
       console.log(postDetailes._id);
       dispatch(editPost({ postDetailes,postData,token }));
       setpostData('')
+      toast.success("post edit successfully.")
       onClose()
     } else {
       if (postData) {
@@ -38,6 +39,7 @@ export const PostModal = ({ isOpen, onClose, editPosts }) => {
           dispatch(createPost({ postData, token }));
           setpostData({...postData,content:""});
           onClose();
+          toast.success("Post created successfully")
         } else {
           toast.info("Post Can't be blank");
         }
