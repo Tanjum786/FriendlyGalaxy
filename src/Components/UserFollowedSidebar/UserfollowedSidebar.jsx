@@ -14,7 +14,6 @@ export const UserfollowedSidebar = () => {
   const allusers = users.filter(
     (eachauser) => eachauser.username !== user.username
   );
-  console.log(allusers);
   return (
     <Box>
       <Flex
@@ -37,9 +36,9 @@ export const UserfollowedSidebar = () => {
         >
           Who to Follow?
         </Heading>
-        {allusers.map((eachuser) => {
+        {allusers.map(({_id,lastName,firstName,profile,username}) => {
           return (
-            <>
+            <Box key={_id}>
               <Flex
                 justify="space-between"
                 alignItems="center"
@@ -49,17 +48,13 @@ export const UserfollowedSidebar = () => {
                 borderRadius="1rem"
                 backgroundColor="gray.300"
               >
-                <Avatar
-                  name="avatar"
-                  size="xl"
-                  src={eachuser.profile}
-                />
+                <Avatar name="avatar" size="xl" src={profile} />
                 <Flex flexDirection="column">
                   <Heading as="h6" fontSize="1.5rem">
-                  {`${eachuser.firstName} ${eachuser.lastName}`}
+                    {`${firstName} ${lastName}`}
                   </Heading>
                   <Text fontSize="xl" color="gray.600">
-                    @{eachuser.username}
+                    @{username}
                   </Text>
                 </Flex>
                 <Button
@@ -73,7 +68,7 @@ export const UserfollowedSidebar = () => {
                   Follow
                 </Button>
               </Flex>
-            </>
+            </Box>
           );
         })}
       </Flex>
