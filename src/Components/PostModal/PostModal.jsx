@@ -15,7 +15,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
 import { createPost, editPost } from "../../Redux/thunks";
 
-export const PostModal = ({ isOpen, onClose, editPosts }) => {
+export const PostModal = ({ isOpen, onClose, editPosts, setEditpost }) => {
   const { token } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
   const [postData, setpostData] = useState("");
@@ -28,24 +28,21 @@ export const PostModal = ({ isOpen, onClose, editPosts }) => {
       const postDetailes = {
         _id: editPosts._id,
       };
-      console.log(postDetailes._id);
-      dispatch(editPost({ postDetailes,postData,token }));
-      setpostData('')
-      toast.success("post edit successfully.")
-      onClose()
+      dispatch(editPost({ postDetailes, postData, token }));
+      setpostData("");
+      setEditpost(null);
+      toast.success("post edit successfully.");
+      onClose();
     } else {
       if (postData) {
-        if (postData.trim().length > 0) {
-          dispatch(createPost({ postData, token }));
-          setpostData({...postData,content:""});
-          onClose();
-          toast.success("Post created successfully")
-        } else {
-          toast.info("Post Can't be blank");
-        }
+        dispatch(createPost({ postData, token }));
+        setpostData("");
+        onClose();
+        toast.success("Post created successfully");
       }
     }
   };
+  // };
   return (
     <Modal isOpen={isOpen} onClose={onClose} size="xl">
       <ModalOverlay />
@@ -66,6 +63,7 @@ export const PostModal = ({ isOpen, onClose, editPosts }) => {
             bg="blue.600"
             colorScheme="blue.600"
             fontSize="2xl"
+            disabled={postData?.trim().length > 0 ? false : true}
             onClick={postHandler}
           >
             Post
