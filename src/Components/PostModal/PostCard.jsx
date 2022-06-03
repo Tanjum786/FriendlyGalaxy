@@ -27,12 +27,13 @@ import { AiOutlineHeart, AiFillHeart } from "react-icons/ai";
 import { useDispatch, useSelector } from "react-redux";
 import {
   addToBookmark,
+  deletePost,
   dislikepost,
   likepost,
   removeBookmark,
 } from "../../Redux/thunks";
 
-export const PostCard = ({ onOpen, post }) => {
+export const PostCard = ({ onOpen, post, setEditpost }) => {
   const {
     firstName,
     lastName,
@@ -54,7 +55,6 @@ export const PostCard = ({ onOpen, post }) => {
   const isBookmarked = bookmarks?.some(
     (bookmarkPost) => bookmarkPost._id === _id
   );
-
   const bookmarkHadler = () => {
     if (isBookmarked) {
       dispatch(removeBookmark({ token, _id }));
@@ -66,11 +66,26 @@ export const PostCard = ({ onOpen, post }) => {
     dispatch(dislikepost({ token, _id }));
   };
 
+  const deletePostHandler = () => {
+    dispatch(deletePost({ token, _id }));
+  };
+  const editPostHandler = () => {
+    setEditpost(post);
+    onOpen();
+  };
   return (
-    <Box bg="gray.200" borderRadius="0.5rem" p="1.5rem" w="100%">
+    <Box bg="gray.200" borderRadius="0.5rem" p="1.5rem" w="60rem">
       <Flex justifyContent="space-between">
         <Flex gap="2rem">
-          <Avatar name="avatar" size="xl" src={profile} />
+          <Avatar
+            name="avatar"
+            size="xl"
+            src={
+              !profile
+                ? "https://t4.ftcdn.net/jpg/04/10/43/77/360_F_410437733_hdq4Q3QOH9uwh0mcqAhRFzOKfrCR24Ta.jpg"
+                : profile
+            }
+          />
           <Flex flexDirection="column" marginTop="1.4rem">
             <Heading as="h6" fontSize="1.5rem">
               {`${firstName} ${lastName}`}
@@ -101,7 +116,7 @@ export const PostCard = ({ onOpen, post }) => {
                     bg="transparent"
                     fontSize="2xl"
                     rightIcon={<FaEdit />}
-                    onClick={onOpen}
+                    onClick={editPostHandler}
                   >
                     Edit
                   </Button>
@@ -109,6 +124,7 @@ export const PostCard = ({ onOpen, post }) => {
                     bg="transparent"
                     fontSize="2xl"
                     rightIcon={<MdDelete />}
+                    onClick={deletePostHandler}
                   >
                     Delete
                   </Button>
@@ -118,7 +134,7 @@ export const PostCard = ({ onOpen, post }) => {
           </Popover>
         ) : null}
       </Flex>
-      <Text p="0.5rem" fontSize="2xl">
+      <Text p="0.5rem" fontSize="2rem">
         {content}
       </Text>
       <Flex gap="2rem">
