@@ -1,14 +1,12 @@
 import {
-  Container,
   Flex,
   Text,
   Box,
   IconButton,
   useDisclosure,
-  Avatar,
   Heading,
 } from "@chakra-ui/react";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { BsFillPlusCircleFill } from "react-icons/bs";
 import { useDispatch, useSelector } from "react-redux";
 import {
@@ -21,6 +19,7 @@ import { getpost } from "../../Redux/thunks";
 
 export const Homepage = () => {
   const { isOpen, onClose, onOpen } = useDisclosure();
+  const [editPosts, setEditpost] = useState(null);
   const { posts, status } = useSelector((state) => state.post);
   const dispatch = useDispatch();
 
@@ -31,7 +30,11 @@ export const Homepage = () => {
   }, [status, posts, dispatch]);
   return (
     <>
-      <PostModal isOpen={isOpen} onClose={onClose} />
+      <PostModal
+        isOpen={isOpen}
+        onClose={onClose}
+        editPosts={editPosts}
+      />
       <Flex flexWrap="wrap" justifyContent="space-between" marginRight="2rem">
         <Sidebar onOpen={onOpen} />
         <Flex w="45%" paddingTop="2rem" flexDirection="column" gap="2rem">
@@ -59,10 +62,19 @@ export const Homepage = () => {
           </Box>
           {posts?.length ? (
             posts.map((post) => {
-              return <PostCard onOpen={onOpen} key={post._id} post={post} />;
+              return (
+                <PostCard
+                  onOpen={onOpen}
+                  key={post._id}
+                  post={post}
+                  setEditpost={setEditpost}
+                />
+              );
             })
           ) : (
-            <Heading color="gray.400" textAlign="center">Lodding.....</Heading>
+            <Heading color="gray.400" textAlign="center">
+              Lodding.....
+            </Heading>
           )}
         </Flex>
         <UserfollowedSidebar />

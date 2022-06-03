@@ -1,5 +1,5 @@
 import { Box, Flex, Heading, useDisclosure } from "@chakra-ui/react";
-import React from "react";
+import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import {
   PostCard,
@@ -11,6 +11,7 @@ import {
 export const BookMark = () => {
   const { isOpen, onClose, onOpen } = useDisclosure();
   const { bookmarks, posts } = useSelector((store) => store.post);
+  const [editPosts, setEditpost] = useState(null);
 
   const filterBookmarks = posts?.filter((eachpost) =>
     bookmarks?.find((eachBookmarkPost) => eachpost._id === eachBookmarkPost._id)
@@ -18,7 +19,7 @@ export const BookMark = () => {
 
   return (
     <>
-      <PostModal isOpen={isOpen} onClose={onClose} />
+      <PostModal isOpen={isOpen} onClose={onClose} editPosts={editPosts} />
       <Flex flexWrap="wrap" justifyContent="space-between" mr="2rem">
         <Sidebar onOpen={onOpen} />
         <Box>
@@ -36,6 +37,7 @@ export const BookMark = () => {
                     onOpen={onOpen}
                     post={bookmarkPost}
                     key={bookmarkPost._id}
+                    setEditpost={setEditpost}
                   />
                 );
               })

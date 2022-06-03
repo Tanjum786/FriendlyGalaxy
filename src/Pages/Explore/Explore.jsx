@@ -1,5 +1,5 @@
 import { Box, Button, Flex, Heading, useDisclosure } from "@chakra-ui/react";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import {
   PostCard,
@@ -12,6 +12,8 @@ import { getpost } from "../../Redux/thunks";
 export const Explore = () => {
   const { isOpen, onClose, onOpen } = useDisclosure();
   const { posts, status } = useSelector((state) => state.post);
+  const [editPosts, setEditpost] = useState(null);
+
   const dispatch = useDispatch();
   useEffect(() => {
     if (status === "idel") {
@@ -21,7 +23,7 @@ export const Explore = () => {
 
   return (
     <>
-      <PostModal isOpen={isOpen} onClose={onClose} />
+      <PostModal isOpen={isOpen} onClose={onClose} editPosts={editPosts} />
       <Flex flexWrap="wrap" justifyContent="space-between" mr="2rem">
         <Sidebar onOpen={onOpen} />
         <Box>
@@ -62,7 +64,14 @@ export const Explore = () => {
           >
             {posts?.length ? (
               posts.map((post) => {
-                return <PostCard onOpen={onOpen} key={post._id} post={post} />;
+                return (
+                  <PostCard
+                    onOpen={onOpen}
+                    key={post._id}
+                    post={post}
+                    setEditpost={setEditpost}
+                  />
+                );
               })
             ) : (
               <Heading color="gray.400">Nothing in Explore</Heading>
