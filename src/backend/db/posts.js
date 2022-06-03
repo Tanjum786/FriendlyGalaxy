@@ -184,7 +184,7 @@ export const posts = [
   {
     _id: uuid(),
     content:
-      "“The struggle you’re in today is developing the strength you need tomorrow",
+      "The struggle you’re in today is developing the strength you need tomorrow",
     likes: {
       likeCount: 8,
       likedBy: [],
@@ -332,7 +332,7 @@ export const posts = [
   {
     _id: uuid(),
     content:
-      "“The struggle you’re in today is developing the strength you need tomorrow",
+      "The struggle you’re in today is developing the strength you need tomorrow",
     likes: {
       likeCount: 8,
       likedBy: [],
