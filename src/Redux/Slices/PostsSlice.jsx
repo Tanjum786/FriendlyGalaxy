@@ -1,7 +1,9 @@
 import { createSlice } from "@reduxjs/toolkit";
 import {
+  addCommentspost,
   addToBookmark,
   createPost,
+  deleteCommentpost,
   deletePost,
   dislikepost,
   editPost,
@@ -51,26 +53,36 @@ const PostSlice = createSlice({
     [removeBookmark.rejected]: (action) => {
       console.log(action);
     },
-    [createPost.fulfilled]:(state,action)=>{
-      state.posts=action.payload.data.posts
+    [createPost.fulfilled]: (state, action) => {
+      state.posts = action.payload.data.posts;
     },
-    [createPost.rejected]:(action)=>{
+    [createPost.rejected]: (action) => {
       console.error(action);
     },
-    [deletePost.fulfilled]:(state,action)=>{
-      state.posts=action.payload.data.posts
+    [deletePost.fulfilled]: (state, action) => {
+      state.posts = action.payload.data.posts;
     },
-    [deletePost.rejected]:(action)=>{
-      console.log(action)
+    [deletePost.rejected]: (action) => {
+      console.log(action);
     },
-    [editPost.fulfilled]:(sate,action)=>{
-      sate.posts=action.payload.data.posts
+    [editPost.fulfilled]: (sate, action) => {
+      sate.posts = action.payload.data.posts;
     },
-    [editPost.rejected]:(action)=>{
-      console.log(action)
-    }
-
-
+    [editPost.rejected]: (action) => {
+      console.log(action);
+    },
+    [addCommentspost.fulfilled]: (state, action) => {
+      state.posts = action.payload.data.posts;
+    },
+    [addCommentspost.rejected]: (action) => {
+      console.log(action);
+    },
+    [deleteCommentpost.fulfilled]: (state, action) => {
+      state.posts = action.payload.data.posts;
+    },
+    [deleteCommentpost.rejected]: (action) => {
+      console.log(action);
+    },
   },
 });
 
