@@ -78,4 +78,64 @@ const removeBookmark = createAsyncThunk(
   }
 );
 
-export { getpost, likepost, dislikepost, addToBookmark,removeBookmark };
+const createPost = createAsyncThunk(
+  "post/createPost",
+  async ({ postData, token }, { rejectWithValue }) => {
+    try {
+      const response = await axios.post(
+        "/api/posts",
+        { postData },
+        { headers: { authorization: token } }
+      );
+      const data = { data: response.data };
+      return data;
+    } catch (error) {
+      console.log(error);
+      return rejectWithValue({ data: error.response.data });
+    }
+  }
+);
+
+const deletePost = createAsyncThunk(
+  "post/deletePost",
+  async ({ token, _id }, { rejectWithValue }) => {
+    try {
+      const response = await axios.delete(`/api/posts/${_id}`, {
+        headers: { authorization: token },
+      });
+      const data = { data: response.data };
+      return data;
+    } catch (error) {
+      return rejectWithValue({ data: error.response.data });
+    }
+  }
+);
+
+const editPost = createAsyncThunk(
+  "posts/editPost",
+  async ({ postDetailes,postData,token }, { rejectWithValue }) => {
+    try {
+      const response = await axios.post(
+        `/api/posts/edit/${postDetailes._id}`,
+        { postData },
+        { headers: { authorization: token } }
+      );
+      console.log(response);
+      const data = { data: response.data };
+      return data;
+    } catch (error) {
+      console.log(error)
+      return rejectWithValue({ data: error.response.data });
+    }
+  }
+);
+export {
+  getpost,
+  likepost,
+  dislikepost,
+  addToBookmark,
+  removeBookmark,
+  createPost,
+  deletePost,
+  editPost
+};
