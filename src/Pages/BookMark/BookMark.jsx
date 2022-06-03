@@ -19,7 +19,7 @@ export const BookMark = () => {
 
   return (
     <>
-      <PostModal isOpen={isOpen} onClose={onClose} editPosts={editPosts} />
+      <PostModal isOpen={isOpen} onClose={onClose} editPosts={editPosts} setEditpost={setEditpost} />
       <Flex flexWrap="wrap" justifyContent="space-between" mr="2rem">
         <Sidebar onOpen={onOpen} />
         <Box>
@@ -31,13 +31,14 @@ export const BookMark = () => {
             alignItems="center"
           >
             {filterBookmarks.length !== 0 ? (
-              filterBookmarks.map((bookmarkPost) => {
+              [...filterBookmarks].reverse().map((bookmarkPost) => {
                 return (
                   <PostCard
                     onOpen={onOpen}
                     post={bookmarkPost}
                     key={bookmarkPost._id}
                     setEditpost={setEditpost}
+                    
                   />
                 );
               })
