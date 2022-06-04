@@ -6,14 +6,15 @@ import { getAlluser } from "../../Redux/thunks";
 
 export const UserfollowedSidebar = () => {
   const { users } = useSelector((state) => state.user);
-  const dispatch = useDispatch();
   const { user } = useSelector((state) => state.auth);
+  const dispatch = useDispatch();
+  const allusers = users?.filter(
+    (eachauser) => eachauser.username !== user.username
+  );
   useEffect(() => {
     dispatch(getAlluser());
   }, []);
-  const allusers = users.filter(
-    (eachauser) => eachauser.username !== user.username
-  );
+
   return (
     <Box>
       <Flex
@@ -36,7 +37,7 @@ export const UserfollowedSidebar = () => {
         >
           Who to Follow?
         </Heading>
-        {allusers.map(({_id,lastName,firstName,profile,username}) => {
+        {allusers?.map(({ _id, lastName, firstName, profile, username }) => {
           return (
             <Box key={_id}>
               <Flex

@@ -87,7 +87,7 @@ export const PostCard = ({ onOpen, post, setEditpost }) => {
       setCommentData("");
     }
   };
-
+  
   const deleteCommnetPostHandler = (commentId) => {
     dispatch(deleteCommentpost({ _id, token, commentId }));
   };
@@ -99,7 +99,11 @@ export const PostCard = ({ onOpen, post, setEditpost }) => {
             name="avatar"
             size="xl"
             src={
-              !profile
+              user.username === username
+                ? !user.profile
+                  ? "https://t4.ftcdn.net/jpg/04/10/43/77/360_F_410437733_hdq4Q3QOH9uwh0mcqAhRFzOKfrCR24Ta.jpg"
+                  : user.profile
+                : !profile
                 ? "https://t4.ftcdn.net/jpg/04/10/43/77/360_F_410437733_hdq4Q3QOH9uwh0mcqAhRFzOKfrCR24Ta.jpg"
                 : profile
             }
@@ -238,7 +242,11 @@ export const PostCard = ({ onOpen, post, setEditpost }) => {
                     name="avatar"
                     size="md"
                     src={
-                      !profile
+                      user.username === username
+                        ? !user.profile
+                          ? "https://t4.ftcdn.net/jpg/04/10/43/77/360_F_410437733_hdq4Q3QOH9uwh0mcqAhRFzOKfrCR24Ta.jpg"
+                          : user.profile
+                        : !profile
                         ? "https://t4.ftcdn.net/jpg/04/10/43/77/360_F_410437733_hdq4Q3QOH9uwh0mcqAhRFzOKfrCR24Ta.jpg"
                         : profile
                     }

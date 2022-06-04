@@ -45,7 +45,7 @@ export const Login = () => {
           JSON.stringify(response.payload.data.foundUser)
         );
         localStorage.setItem("token", response.payload.data.encodedToken);
-        navigate(location?.state?.from?.pathname || "/homepage");
+        navigate(location?.state?.from?.pathname || "/homepage",{replace:true}  );
         toast.success("Successfully loged in");
       } else {
         toast.warn("user not found Need to signup first");

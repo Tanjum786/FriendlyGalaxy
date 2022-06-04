@@ -24,7 +24,7 @@ export const Profile = () => {
 
   useEffect(() => {
     dispatch(getpost());
-  });
+  },[]);
   const {
     isOpen: isOpenProfile,
     onOpen: onOpenProfile,
