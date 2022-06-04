@@ -1,4 +1,4 @@
-export { signupPage, loginPage } from "./AuthThunk";
+export { signupPage, loginPage ,editUserProfile} from "./AuthThunk";
 export {
   getpost,
   likepost,
@@ -11,4 +11,5 @@ export {
   addCommentspost,
   deleteCommentpost
 } from "./PostsThunk";
-export { getAlluser } from "./UserThunk";
+export { getAlluser} from "./UserThunk";
+                                                                                                                                 

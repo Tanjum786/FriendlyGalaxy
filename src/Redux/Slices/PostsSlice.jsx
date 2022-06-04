@@ -20,6 +20,15 @@ const initialState = {
 const PostSlice = createSlice({
   name: "post",
   initialState,
+  reducers:{
+  trendingPostFilter:(state)=>{
+    state.posts.sort((a,b)=>a.likes.likeCount-b.likes.likeCount)
+  },
+  latestPostFilter:(state)=>{
+    state.posts.sort((a,b)=>a.createdAt-b.createdAt)
+  }
+
+  },
   extraReducers: {
     [getpost.fulfilled]: (state, action) => {
       state.posts = action.payload.data.posts;
@@ -85,5 +94,5 @@ const PostSlice = createSlice({
     },
   },
 });
-
+export const {trendingPostFilter,latestPostFilter}=PostSlice.actions
 export default PostSlice.reducer;
