@@ -7,19 +7,21 @@ import {
   Sidebar,
   UserfollowedSidebar,
 } from "../../Components";
+import {
+  latestPostFilter,
+  trendingPostFilter,
+} from "../../Redux/Slices/PostsSlice";
 import { getpost } from "../../Redux/thunks";
 
 export const Explore = () => {
   const { isOpen, onClose, onOpen } = useDisclosure();
-  const { posts, status } = useSelector((state) => state.post);
+  const { posts } = useSelector((state) => state.post);
   const [editPosts, setEditpost] = useState(null);
 
   const dispatch = useDispatch();
   useEffect(() => {
-    if (status === "idel") {
-      dispatch(getpost());
-    }
-  });
+    dispatch(getpost());
+  }, []);
 
   return (
     <>
@@ -47,6 +49,7 @@ export const Explore = () => {
               bg="blue.500"
               p="1.5rem"
               colorScheme="blue.600"
+              onClick={() => dispatch(trendingPostFilter())}
             >
               Tranding
             </Button>
@@ -55,6 +58,7 @@ export const Explore = () => {
               bg="blue.500"
               p="1.5rem"
               colorScheme="blue.600"
+              onClick={() => dispatch(latestPostFilter())}
             >
               Latest
             </Button>
@@ -68,7 +72,7 @@ export const Explore = () => {
             alignItems="center"
           >
             {posts?.length ? (
-             [...posts].reverse().map((post) => {
+              [...posts].reverse().map((post) => {
                 return (
                   <PostCard
                     onOpen={onOpen}
