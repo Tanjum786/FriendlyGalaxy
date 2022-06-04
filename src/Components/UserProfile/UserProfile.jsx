@@ -88,7 +88,7 @@ export const UserProfile = ({ onOpenProfile }) => {
       </Flex>
       <Text fontSize="1.5rem">{bio}</Text>
       <Link
-        href="https://portfolio-tanjum786.netlify.app/"
+        href={link}
         isExternal
         color="blue.500"
         fontWeight="bold"
