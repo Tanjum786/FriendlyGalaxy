@@ -11,23 +11,28 @@ import { BsFillPlusCircleFill } from "react-icons/bs";
 import { useDispatch, useSelector } from "react-redux";
 import {
   Sidebar,
-  UserfollowedSidebar,
   PostModal,
   PostCard,
+  FollowingSuggestions,
 } from "../../Components";
-import { getpost } from "../../Redux/thunks";
+import { getAlluser, getpost } from "../../Redux/thunks";
 
 export const Homepage = () => {
   const { isOpen, onClose, onOpen } = useDisclosure();
   const [editPosts, setEditpost] = useState(null);
   const { posts, status } = useSelector((state) => state.post);
   const dispatch = useDispatch();
-
+  const { user } = useSelector((state) => state.auth);
+  const { users } = useSelector((state) => state.user);
   useEffect(() => {
     if (status === "idel") {
       dispatch(getpost());
+      dispatch(getAlluser());
     }
   }, [status, posts, dispatch]);
+
+  const allpost = posts.filter((post) => post.username == user.username);
+
   return (
     <>
       <PostModal
@@ -61,8 +66,8 @@ export const Homepage = () => {
               />
             </Flex>
           </Box>
-          {posts?.length ? (
-            [...posts].reverse().map((post) => {
+          {allpost?.length ? (
+            [...allpost].reverse().map((post) => {
               return (
                 <PostCard
                   onOpen={onOpen}
@@ -78,7 +83,7 @@ export const Homepage = () => {
             </Heading>
           )}
         </Flex>
-        <UserfollowedSidebar />
+        <FollowingSuggestions />
       </Flex>
     </>
   );

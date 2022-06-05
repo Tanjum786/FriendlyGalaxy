@@ -4,4 +4,13 @@ import { PostCard } from "./PostModal/PostCard";
 import { PostModal } from "./PostModal/PostModal";
 import { UserProfile } from "./UserProfile/UserProfile";
 import { ProfileEditModal } from "./UserProfile/ProfileEditModal";
-export {Sidebar,UserfollowedSidebar,PostCard,PostModal,UserProfile,ProfileEditModal}
+import { FollowingSuggestions } from "./UserFollowedSidebar/FollowingSuggestions";
+export {
+  Sidebar,
+  UserfollowedSidebar,
+  PostCard,
+  PostModal,
+  UserProfile,
+  ProfileEditModal,
+  FollowingSuggestions
+};

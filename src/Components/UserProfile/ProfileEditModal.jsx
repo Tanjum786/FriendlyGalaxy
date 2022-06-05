@@ -28,8 +28,8 @@ export const ProfileEditModal = ({
   onOpenProfile,
   onCloseProfile,
 }) => {
-  const { user,token } = useSelector((store) => store.auth);
-  const [userData, setuserData] = useState({ ...user});
+  const { user, token } = useSelector((store) => store.auth);
+  const [userData, setuserData] = useState({ ...user });
   const dispatch = useDispatch();
   const { profile, firstName, lastName, bio, link } = userData;
 
@@ -38,17 +38,17 @@ export const ProfileEditModal = ({
     onCloseProfile();
   };
 
-  const imageChangeHandaler=(e)=>{
-    let reader=new FileReader()
-    reader.readAsDataURL(e.target.files[0])
-    reader.onload=()=>{
-      if(reader.readyState===2){
-        setuserData(data=>({...data,profile:reader.result}))
-        console.log(userData.firstName)
-      localStorage.setItem("update-image",reader.result)
+  const imageChangeHandaler = (e) => {
+    let reader = new FileReader();
+    reader.readAsDataURL(e.target.files[0]);
+    reader.onload = () => {
+      if (reader.readyState === 2) {
+        setuserData((data) => ({ ...data, profile: reader.result }));
+        console.log(userData.firstName);
+        localStorage.setItem("update-image", reader.result);
       }
-    }
-  }
+    };
+  };
   return (
     <>
       <Modal
@@ -62,15 +62,7 @@ export const ProfileEditModal = ({
           <ModalCloseButton />
           <ModalBody>
             <Center position="relative">
-              <Avatar
-                name="avatar"
-                size="2xl"
-                src={
-                  !profile
-                    ? "https://t4.ftcdn.net/jpg/04/10/43/77/360_F_410437733_hdq4Q3QOH9uwh0mcqAhRFzOKfrCR24Ta.jpg"
-                    : profile
-                }
-              />
+              <Avatar name="avatar" size="2xl" src={profile} />
               <Box
                 position="absolute"
                 right="18rem"

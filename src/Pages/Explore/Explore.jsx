@@ -2,16 +2,16 @@ import { Box, Button, Flex, Heading, useDisclosure } from "@chakra-ui/react";
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import {
+  FollowingSuggestions,
   PostCard,
   PostModal,
   Sidebar,
-  UserfollowedSidebar,
 } from "../../Components";
 import {
   latestPostFilter,
   trendingPostFilter,
 } from "../../Redux/Slices/PostsSlice";
-import { getpost } from "../../Redux/thunks";
+import { getAlluser, getpost } from "../../Redux/thunks";
 
 export const Explore = () => {
   const { isOpen, onClose, onOpen } = useDisclosure();
@@ -21,6 +21,7 @@ export const Explore = () => {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getpost());
+    dispatch(getAlluser())
   }, []);
 
   return (
@@ -87,7 +88,7 @@ export const Explore = () => {
             )}
           </Flex>
         </Box>
-        <UserfollowedSidebar />
+        <FollowingSuggestions />
       </Flex>
     </>
   );

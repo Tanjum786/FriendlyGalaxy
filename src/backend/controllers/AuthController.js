@@ -37,6 +37,8 @@ export const signupHandler = function (schema, request) {
       username,
       password,
       ...rest,
+      profile:
+        "https://t4.ftcdn.net/jpg/04/10/43/77/360_F_410437733_hdq4Q3QOH9uwh0mcqAhRFzOKfrCR24Ta.jpg",
       followers: [],
       following: [],
       bookmarks: [],

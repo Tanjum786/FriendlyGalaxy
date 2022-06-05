@@ -19,6 +19,7 @@ export const UserProfile = ({ onOpenProfile }) => {
   const dispatch = useDispatch();
   const { posts } = useSelector((state) => state.post);
   const { user } = useSelector((state) => state.auth);
+  const { users } = useSelector((state) => state.user);
 
   const {
     firstName,
@@ -41,6 +42,10 @@ export const UserProfile = ({ onOpenProfile }) => {
     (eachpost) => eachpost.username === user.username
   );
 
+  const existingUser = users?.find(
+    (eachuser) => eachuser.username === user.username
+  );
+  console.log(existingUser);
   return (
     <Flex
       w="60rem"
@@ -53,15 +58,7 @@ export const UserProfile = ({ onOpenProfile }) => {
       zIndex="2"
       borderRadius="0.5rem"
     >
-      <Avatar
-        name="avatar"
-        boxSize="15rem"
-        src={
-          !profile
-            ? "https://t4.ftcdn.net/jpg/04/10/43/77/360_F_410437733_hdq4Q3QOH9uwh0mcqAhRFzOKfrCR24Ta.jpg"
-            : profile
-        }
-      />
+      <Avatar name="avatar" boxSize="15rem" src={profile} />
       <Heading as="h5">{`${firstName} ${lastName}`}</Heading>
       <Text fontSize="2xl">@{username}</Text>
       <Flex gap="0.5rem">
@@ -99,7 +96,7 @@ export const UserProfile = ({ onOpenProfile }) => {
       <Flex gap="2rem">
         <Flex flexDirection="column" alignItems="center">
           <Heading as="h3" size="lg">
-            {followers.length}
+            {existingUser?.followers.length}
           </Heading>
           <Text fontSize="xl" fontWeight="bold">
             Followers
@@ -115,7 +112,7 @@ export const UserProfile = ({ onOpenProfile }) => {
         </Flex>
         <Flex flexDirection="column" alignItems="center">
           <Heading as="h3" size="lg">
-            {following.length}
+            {existingUser?.following.length}
           </Heading>
           <Text fontSize="xl" fontWeight="bold">
             Following

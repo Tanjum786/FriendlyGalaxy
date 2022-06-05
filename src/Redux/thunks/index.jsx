@@ -11,5 +11,5 @@ export {
   addCommentspost,
   deleteCommentpost
 } from "./PostsThunk";
-export { getAlluser} from "./UserThunk";
+export { getAlluser,Followuser,unFollowuser} from "./UserThunk";
                                                                                                                                  
