@@ -31,7 +31,17 @@ export const Homepage = () => {
     }
   }, [status, posts, dispatch]);
 
-  const allpost = posts.filter((post) => post.username == user.username);
+  const followUsers = users.filter((userFollower) =>
+    userFollower.followers?.some(
+      (follower) => follower.username === user.username
+    )
+  );
+
+  const allpost = posts.filter(
+    (post) =>
+      post.username === user.username ||
+      followUsers?.some((followuser) => followuser.username === post.username)
+  );
 
   return (
     <>
@@ -79,7 +89,7 @@ export const Homepage = () => {
             })
           ) : (
             <Heading color="gray.400" textAlign="center">
-              Lodding.....
+              Follow some user to see there feed
             </Heading>
           )}
         </Flex>
