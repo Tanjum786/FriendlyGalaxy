@@ -21,19 +21,7 @@ export const posts = [
     profile: "https://bit.ly/dan-abramov",
     createdAt: 2020,
     updatedAt: formatDate(),
-    comments: [
-      {
-        _id: uuid(),
-        username: "sonisharma",
-        firstName: "Sania",
-        lastName: "shaik",
-        commentData: "You are perfect just the way you are.",
-        profile:
-          "https://d2gg9evh47fn9z.cloudfront.net/800px_COLOURBOX26712233.jpg",
-        createdAt: 2021,
-        updatedAt: formatDate(),
-      },
-    ],
+    comments: [],
   },
   {
     _id: uuid(),
@@ -109,19 +97,7 @@ export const posts = [
       "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRUpXPhFj_GOReC0bkV7ZbkUR9FB7NnOyHgUSe_m9q7AyPZUmHqQfCPUYJy2grXOAHQ6tI&usqp=CAU",
     createdAt: 2022,
     updatedAt: formatDate(),
-    comments: [
-      {
-        _id: uuid(),
-        username: "josefnwamba",
-        firstName: "Josef",
-        lastName: "Nwamba",
-        profile:
-          "https://i.pinimg.com/originals/72/e7/98/72e7982f686ed5ff4ff4e2f9e2fa09db.jpg",
-        createdAt: 2021,
-        updatedAt: formatDate(),
-        commentData: "You are perfect just the way you are.",
-      },
-    ],
+    comments: [],
   },
   {
     _id: uuid(),
@@ -197,19 +173,7 @@ export const posts = [
       "https://thumbs.dreamstime.com/b/businessman-icon-image-male-avatar-profile-vector-glasses-beard-hairstyle-179728610.jpg",
     createdAt: 2021,
     updatedAt: formatDate(),
-    comments: [
-      {
-        _id: uuid(),
-        username: "samdukky",
-        firstName: "Sam",
-        lastName: "Dukky",
-        profile:
-          "https://i.pinimg.com/474x/82/ab/35/82ab3533ee71daf256f23c1ccf20ad6f--avatar-maker.jpg",
-        createdAt: 2020,
-        updatedAt: formatDate(),
-        commentData: "You are an incredible human.",
-      },
-    ],
+    comments: [],
   },
   {
     _id: uuid(),
@@ -341,7 +305,8 @@ export const posts = [
     username: "tanjum",
     firstName: "Tanjum",
     lastName: "Kadakol",
-    profile:"https://i.pinimg.com/736x/b8/62/46/b86246346098341fb8b7c854ea90ab8f.jpg",
+    profile:
+      "https://i.pinimg.com/736x/b8/62/46/b86246346098341fb8b7c854ea90ab8f.jpg",
     createdAt: 2021,
     updatedAt: formatDate(),
     comments: [

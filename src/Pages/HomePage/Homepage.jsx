@@ -34,12 +34,13 @@ export const Homepage = () => {
         isOpen={isOpen}
         onClose={onClose}
         editPosts={editPosts}
+        setEditpost={setEditpost}
       />
       <Flex flexWrap="wrap" justifyContent="space-between" marginRight="2rem">
         <Sidebar onOpen={onOpen} />
         <Flex w="45%" paddingTop="2rem" flexDirection="column" gap="2rem">
           <Box
-            w="100%"
+            w="60rem"
             bg="gray.200"
             cursor="pointer"
             borderRadius="0.5rem"
@@ -61,7 +62,7 @@ export const Homepage = () => {
             </Flex>
           </Box>
           {posts?.length ? (
-            posts.map((post) => {
+            [...posts].reverse().map((post) => {
               return (
                 <PostCard
                   onOpen={onOpen}

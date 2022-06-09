@@ -33,7 +33,8 @@ export const Profile = () => {
 
   return (
     <>
-      <PostModal isOpen={isOpen} onClose={onClose} editPosts={editPosts} />
+      <PostModal isOpen={isOpen} onClose={onClose} editPosts={editPosts} setEditpost={setEditpost}
+       />
       <ProfileEditModal
         isOpenProfile={isOpenProfile}
         onCloseProfile={onCloseProfile}
@@ -43,7 +44,7 @@ export const Profile = () => {
         <Sidebar onOpen={onOpen} />
         <Flex flexDirection="column" gap="2rem" alignItems="center">
           <UserProfile onOpenProfile={onOpenProfile} />
-          {userPost.map((post) => {
+          {[...userPost].reverse().map((post) => {
             return (
               <PostCard
                 onOpen={onOpen}

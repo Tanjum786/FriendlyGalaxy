@@ -7,6 +7,8 @@ export {
   removeBookmark,
   createPost,
   deletePost,
-  editPost
+  editPost,
+  addCommentspost,
+  deleteCommentpost
 } from "./PostsThunk";
 export { getAlluser } from "./UserThunk";

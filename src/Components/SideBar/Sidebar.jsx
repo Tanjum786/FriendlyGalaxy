@@ -131,13 +131,14 @@ export const Sidebar = ({ onOpen }) => {
           </ListItem>
         </UnorderedList>
       </Flex>
-      <Button
+        <Button
         m="6"
         fontSize="2rem"
         p="2rem"
         bg="blue.600"
         colorScheme="blue.600"
         onClick={onOpen}
+        disabled={`${pathname === "/bookmark"}`==="true"?true:false}
       >
         Create Post
       </Button>

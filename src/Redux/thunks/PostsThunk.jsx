@@ -88,6 +88,7 @@ const createPost = createAsyncThunk(
         { headers: { authorization: token } }
       );
       const data = { data: response.data };
+      console.log(response)
       return data;
     } catch (error) {
       console.log(error);
@@ -113,22 +114,59 @@ const deletePost = createAsyncThunk(
 
 const editPost = createAsyncThunk(
   "posts/editPost",
-  async ({ postDetailes,postData,token }, { rejectWithValue }) => {
+  async ({ postDetailes, postData, token }, { rejectWithValue }) => {
     try {
       const response = await axios.post(
         `/api/posts/edit/${postDetailes._id}`,
         { postData },
         { headers: { authorization: token } }
       );
-      console.log(response);
       const data = { data: response.data };
       return data;
     } catch (error) {
-      console.log(error)
+      console.log(error);
       return rejectWithValue({ data: error.response.data });
     }
   }
 );
+
+const addCommentspost = createAsyncThunk(
+  "posts/addComments",
+  async ({ commentData, token, _id }, { rejectWithValue }) => {
+    try {
+      const response = await axios.post(
+        `/api/comments/add/${_id}`,
+        { commentData },
+        { headers: { authorization: token } }
+      );
+      const data = { data: response.data };
+      console.log(response);
+      return data;
+    } catch (error) {
+      return rejectWithValue({ data: error.response.data });
+    }
+  }
+);
+
+const deleteCommentpost = createAsyncThunk(
+  "posts/deleteCommentpost",
+  async ({ _id, token, commentId }, { rejectWithValue }) => {
+    try {
+      const response = await axios.post(
+        `/api/comments/delete/${_id}/${commentId}`,
+        {},
+        { headers: { authorization: token } }
+      );
+      console.log(response);
+      const data = { data: response.data };
+      return data;
+    } catch (error) {
+      console.log(error);
+      return rejectWithValue({ data: error.response.data });
+    }
+  }
+);
+
 export {
   getpost,
   likepost,
@@ -137,5 +175,7 @@ export {
   removeBookmark,
   createPost,
   deletePost,
-  editPost
+  editPost,
+  addCommentspost,
+  deleteCommentpost,
 };

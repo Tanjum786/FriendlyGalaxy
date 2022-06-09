@@ -23,7 +23,12 @@ export const Explore = () => {
 
   return (
     <>
-      <PostModal isOpen={isOpen} onClose={onClose} editPosts={editPosts} />
+      <PostModal
+        isOpen={isOpen}
+        onClose={onClose}
+        editPosts={editPosts}
+        setEditpost={setEditpost}
+      />
       <Flex flexWrap="wrap" justifyContent="space-between" mr="2rem">
         <Sidebar onOpen={onOpen} />
         <Box>
@@ -63,7 +68,7 @@ export const Explore = () => {
             alignItems="center"
           >
             {posts?.length ? (
-              posts.map((post) => {
+             [...posts].reverse().map((post) => {
                 return (
                   <PostCard
                     onOpen={onOpen}
