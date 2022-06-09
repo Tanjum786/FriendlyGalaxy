@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { loginPage, signupPage } from "../thunks";
+import { editUserProfile, loginPage, signupPage } from "../thunks";
 
 const initialState = {
   user: JSON.parse(localStorage.getItem("user")) || null,
@@ -32,6 +32,12 @@ const authSlice = createSlice({
     [loginPage.rejected]: (action) => {
       console.error(action);
     },
+    [editUserProfile.fulfilled]: (state, action) => {
+      state.user = action.payload.data.user;
+    },
+    [editUserProfile.rejected]:(action)=>{
+        console.log(action)
+    }
   },
 });
 

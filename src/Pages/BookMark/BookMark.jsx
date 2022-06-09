@@ -1,17 +1,23 @@
-import { Box, Flex, Heading, useDisclosure } from "@chakra-ui/react";
-import React, { useState } from "react";
-import { useSelector } from "react-redux";
+import { Box, Flex, Heading,useDisclosure } from "@chakra-ui/react";
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import {
+  FollowingSuggestions,
   PostCard,
   PostModal,
   Sidebar,
-  UserfollowedSidebar,
 } from "../../Components";
+import { getAlluser } from "../../Redux/thunks";
 
 export const BookMark = () => {
   const { isOpen, onClose, onOpen } = useDisclosure();
   const { bookmarks, posts } = useSelector((store) => store.post);
   const [editPosts, setEditpost] = useState(null);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getAlluser());
+  }, []);
 
   const filterBookmarks = posts?.filter((eachpost) =>
     bookmarks?.find((eachBookmarkPost) => eachpost._id === eachBookmarkPost._id)
@@ -19,7 +25,12 @@ export const BookMark = () => {
 
   return (
     <>
-      <PostModal isOpen={isOpen} onClose={onClose} editPosts={editPosts} setEditpost={setEditpost} />
+      <PostModal
+        isOpen={isOpen}
+        onClose={onClose}
+        editPosts={editPosts}
+        setEditpost={setEditpost}
+      />
       <Flex flexWrap="wrap" justifyContent="space-between" mr="2rem">
         <Sidebar onOpen={onOpen} />
         <Box>
@@ -38,7 +49,6 @@ export const BookMark = () => {
                     post={bookmarkPost}
                     key={bookmarkPost._id}
                     setEditpost={setEditpost}
-                    
                   />
                 );
               })
@@ -49,7 +59,7 @@ export const BookMark = () => {
             )}
           </Flex>
         </Box>
-        <UserfollowedSidebar />
+        <FollowingSuggestions />
       </Flex>
     </>
   );

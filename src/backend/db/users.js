@@ -18,6 +18,8 @@ export const users = [
     link: "https://portfolio-tanjum786.netlify.app/",
     profile:
       "https://i.pinimg.com/736x/b8/62/46/b86246346098341fb8b7c854ea90ab8f.jpg",
+    following: [],
+    followers: [],
   },
   {
     _id: uuid(),
@@ -31,6 +33,9 @@ export const users = [
     updatedAt: formatDate(),
     bio: "I am Front-end developer",
     link: "https://portfolio-tanjum786.netlify.app/",
+    following: [],
+    followers: [],
+
   },
   {
     _id: uuid(),
@@ -38,12 +43,14 @@ export const users = [
     firstName: "Segun",
     lastName: "Adebayo",
     password: "segun123",
-    profile:
-      "https://bit.ly/code-beast",
+    profile: "https://bit.ly/code-beast",
     createdAt: 2021,
     updatedAt: formatDate(),
     bio: "I am Front-end developer",
     link: "https://portfolio-tanjum786.netlify.app/",
+    following: [],
+    followers: [],
+
   },
   {
     _id: uuid(),
@@ -52,11 +59,14 @@ export const users = [
     lastName: "Nwamba",
     password: "josef123",
     profile:
-    "https://i.pinimg.com/originals/72/e7/98/72e7982f686ed5ff4ff4e2f9e2fa09db.jpg",
+      "https://i.pinimg.com/originals/72/e7/98/72e7982f686ed5ff4ff4e2f9e2fa09db.jpg",
     createdAt: 2021,
     updatedAt: formatDate(),
     bio: "I am Front-end developer",
     link: "https://portfolio-tanjum786.netlify.app/",
+    following: [],
+    followers: [],
+
   },
   {
     _id: uuid(),
@@ -65,10 +75,13 @@ export const users = [
     lastName: "Sha",
     password: "shivi123",
     profile:
-    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRUpXPhFj_GOReC0bkV7ZbkUR9FB7NnOyHgUSe_m9q7AyPZUmHqQfCPUYJy2grXOAHQ6tI&usqp=CAU",
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRUpXPhFj_GOReC0bkV7ZbkUR9FB7NnOyHgUSe_m9q7AyPZUmHqQfCPUYJy2grXOAHQ6tI&usqp=CAU",
     createdAt: 2021,
     updatedAt: formatDate(),
     bio: "I am Front-end developer",
     link: "https://portfolio-tanjum786.netlify.app/",
+    following: [],
+    followers: [],
+
   },
 ];

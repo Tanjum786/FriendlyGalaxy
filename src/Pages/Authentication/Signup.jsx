@@ -46,7 +46,7 @@ export const Signup = () => {
             JSON.stringify(response.payload.data.createdUser)
           );
           localStorage.setItem("token", response.payload.data.encodedToken);
-          navigate(location?.state?.from?.pathname|| "/homepage");
+          navigate(location?.state?.from?.pathname|| "/homepage",{replace:true});
           setNewUser({
             username: "",
             firstName: "",

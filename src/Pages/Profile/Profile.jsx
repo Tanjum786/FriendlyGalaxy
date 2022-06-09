@@ -2,14 +2,14 @@ import { Text, Flex, useDisclosure } from "@chakra-ui/react";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
+  FollowingSuggestions,
   PostCard,
   PostModal,
   ProfileEditModal,
   Sidebar,
-  UserfollowedSidebar,
   UserProfile,
 } from "../../Components";
-import { getpost } from "../../Redux/thunks";
+import { getAlluser, getpost } from "../../Redux/thunks";
 
 export const Profile = () => {
   const { onOpen, isOpen, onClose } = useDisclosure();
@@ -24,7 +24,8 @@ export const Profile = () => {
 
   useEffect(() => {
     dispatch(getpost());
-  });
+    dispatch(getAlluser())
+  },[]);
   const {
     isOpen: isOpenProfile,
     onOpen: onOpenProfile,
@@ -55,7 +56,7 @@ export const Profile = () => {
             );
           })}
         </Flex>
-        <UserfollowedSidebar />
+        <FollowingSuggestions />
       </Flex>
     </>
   );

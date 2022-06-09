@@ -98,11 +98,7 @@ export const PostCard = ({ onOpen, post, setEditpost }) => {
           <Avatar
             name="avatar"
             size="xl"
-            src={
-              !profile
-                ? "https://t4.ftcdn.net/jpg/04/10/43/77/360_F_410437733_hdq4Q3QOH9uwh0mcqAhRFzOKfrCR24Ta.jpg"
-                : profile
-            }
+            src={user.username === username ? user.profile : profile}
           />
           <Flex flexDirection="column" marginTop="1.4rem">
             <Heading as="h6" fontSize="1.5rem">
@@ -192,15 +188,7 @@ export const PostCard = ({ onOpen, post, setEditpost }) => {
         </Flex>
       </Flex>
       <Flex mt="1.5rem">
-        <Avatar
-          name="avatar"
-          size="md"
-          src={
-            !user.profile
-              ? "https://t4.ftcdn.net/jpg/04/10/43/77/360_F_410437733_hdq4Q3QOH9uwh0mcqAhRFzOKfrCR24Ta.jpg"
-              : user.profile
-          }
-        />
+        <Avatar name="avatar" size="md" src={user.profile} />
         <InputGroup>
           <Input
             placeholder="write your comment"
@@ -237,11 +225,7 @@ export const PostCard = ({ onOpen, post, setEditpost }) => {
                   <Avatar
                     name="avatar"
                     size="md"
-                    src={
-                      !profile
-                        ? "https://t4.ftcdn.net/jpg/04/10/43/77/360_F_410437733_hdq4Q3QOH9uwh0mcqAhRFzOKfrCR24Ta.jpg"
-                        : profile
-                    }
+                    src={user.username === username ? user.profile : profile}
                   />
                   <Flex flexDirection="column">
                     <Heading as="h2" fontSize="1rem" m="0.5rem">
