@@ -56,7 +56,7 @@ export const Signup = () => {
           });
           toast.success(`${firstName} successfully Created account`);
         } else {
-          toast.error("Somthing went wrong");
+          toast.error("User already exist please login");
         }
       } else {
         toast.error("Password are not matched");

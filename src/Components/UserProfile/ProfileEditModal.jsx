@@ -19,12 +19,15 @@ import {
   Flex,
 } from "@chakra-ui/react";
 import { AiFillCamera } from "react-icons/ai";
+import { useSelector } from "react-redux";
 
 export const ProfileEditModal = ({
   isOpenProfile,
   onOpenProfile,
   onCloseProfile,
 }) => {
+  const {user}=useSelector((store)=>store.auth)
+  const {profile,firstName,lastName}=user
   return (
     <>
       <Modal
@@ -41,7 +44,7 @@ export const ProfileEditModal = ({
               <Avatar
                 name="avatar"
                 size="2xl"
-                src="https://bit.ly/dan-abramov"
+                src={!profile?"https://t4.ftcdn.net/jpg/04/10/43/77/360_F_410437733_hdq4Q3QOH9uwh0mcqAhRFzOKfrCR24Ta.jpg":profile}
               />
               <Box
                 position="absolute"
@@ -65,7 +68,7 @@ export const ProfileEditModal = ({
                 </FormLabel>
               </Box>
             </Center>
-            <Heading color="gray.500">Adarsh Balika</Heading>
+            <Heading color="gray.500">{`${firstName} ${lastName}`}</Heading>
             <Flex flexDirection="column" gap="1rem">
               <Text fontSize="2xl">Bio:</Text>
               <Textarea
