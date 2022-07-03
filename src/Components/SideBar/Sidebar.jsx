@@ -41,7 +41,7 @@ export const Sidebar = ({ onOpen }) => {
         <Heading
           fontSize={{ base: "3xl", md: "4.5xl", lg: "5xl" }}
           p="3"
-          fontFamily="Crimson Text serif"
+          fontFamily=" 'Lobster', cursive"
           color="blue.600"
           display={{base:"block"}}
           cursor="pointer"

@@ -61,7 +61,7 @@ export const BookMark = () => {
       >
         <Heading
           fontSize={{ base: "6xl", md: "4.5xl", lg: "5xl" }}
-          fontFamily="Crimson Text serif"
+          fontFamily=" 'Lobster', cursive"
           color="blue.600"
           p="1.5rem"
           cursor="pointer"

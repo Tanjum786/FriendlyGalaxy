@@ -82,7 +82,6 @@ export const Signup = () => {
       <Flex>
         <VStack
           w="40rem"
-          fontFamily="Crimson Text serif"
           p="10"
           borderRadius="0.5rem"
           spacing="5"
@@ -93,14 +92,14 @@ export const Signup = () => {
             fontSize="5xl"
             borderBottom="1px"
             p="2"
-            fontFamily="Crimson Text serif"
+            fontFamily=" 'Lobster', cursive"
             borderBottomColor="blue.600"
             color="blue.600"
           >
             FriendlyGalaxy
           </Heading>
 
-          <Heading fontFamily="cursive">Signup</Heading>
+          <Heading fontFamily=" 'Lobster', cursive">Signup</Heading>
 
           <FormControl>
             <VStack spacing="2rem" p="2rem">

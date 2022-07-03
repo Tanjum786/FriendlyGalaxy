@@ -67,11 +67,10 @@ export const Login = () => {
       justifyContent="space-around"
       flexDirection="row-reverse"
     >
-      <Image src={landingpageImage} display={{base:"none",lg:"block"}} />
+      <Image src={landingpageImage} display={{ base: "none", lg: "block" }} />
       <Flex py={20} justifyContent="center">
         <VStack
           w="40rem"
-          fontFamily="Crimson Text serif"
           p="10"
           borderRadius="0.5rem"
           spacing="5"
@@ -82,14 +81,14 @@ export const Login = () => {
             fontSize="5xl"
             borderBottom="1px"
             p="2"
-            fontFamily="cursive"
+            fontFamily=" 'Lobster', cursive"
             borderBottomColor="blue.600"
             color="blue.600"
           >
             FriendlyGalaxy
           </Heading>
 
-          <Heading fontFamily="Crimson Text serif">Login</Heading>
+          <Heading fontFamily=" 'Lobster', cursive">Login</Heading>
 
           <FormControl>
             <VStack spacing="2rem" p="2rem">

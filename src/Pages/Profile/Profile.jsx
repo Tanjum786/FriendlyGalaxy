@@ -56,7 +56,7 @@ export const Profile = () => {
       >
         <Heading
           fontSize={{ base: "6xl", md: "4.5xl", lg: "5xl" }}
-          fontFamily="Crimson Text serif"
+          fontFamily=" 'Lobster', cursive"
           color="blue.600"
           borderBottom="2px"
           p="1.5rem"
