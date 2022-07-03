@@ -5,16 +5,22 @@ import {
   IconButton,
   useDisclosure,
   Heading,
+  Tooltip,
 } from "@chakra-ui/react";
 import React, { useEffect, useState } from "react";
 import { BsFillPlusCircleFill } from "react-icons/bs";
+import { MdOutlineLogout } from "react-icons/md";
 import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 import {
   Sidebar,
   PostModal,
   PostCard,
   FollowingSuggestions,
+  MobileNavbar,
 } from "../../Components";
+import { logoutUser } from "../../Redux/Slices/AuthSlice";
 import { getAlluser, getpost } from "../../Redux/thunks";
 
 export const Homepage = () => {
@@ -30,7 +36,7 @@ export const Homepage = () => {
       dispatch(getAlluser());
     }
   }, [status, posts, dispatch]);
-
+  const navigate = useNavigate();
   const followUsers = users.filter((userFollower) =>
     userFollower.followers?.some(
       (follower) => follower.username === user.username
@@ -43,6 +49,12 @@ export const Homepage = () => {
       followUsers?.some((followuser) => followuser.username === post.username)
   );
 
+  const logoutHandler = () => {
+    dispatch(logoutUser());
+    navigate("/");
+    toast.success("logout successfully");
+  };
+
   return (
     <>
       <PostModal
@@ -51,11 +63,56 @@ export const Homepage = () => {
         editPosts={editPosts}
         setEditpost={setEditpost}
       />
-      <Flex flexWrap="wrap" justifyContent="space-between" marginRight="2rem">
+      <Box
+        position="sticky"
+        top="0"
+        zIndex="4"
+        display={{ base: "flex", md: "none", lg: "none" }}
+        flexDirection="row"
+        width="100%"
+        bg="gray.200"
+        borderBottom="2px"
+        justifyContent="space-between"
+        borderBottomColor="blue.400"
+      >
+        <Heading
+          fontSize={{ base: "6xl", md: "4.5xl", lg: "5xl" }}
+          fontFamily=" 'Lobster', cursive"
+          color="blue.600"
+          p="1.5rem"
+          cursor="pointer"
+          onClick={()=>navigate("/homepage")}
+        >
+          FriendlyGalaxy
+        </Heading>
+        <IconButton
+          icon={<MdOutlineLogout />}
+          fontSize="4rem"
+          p="1.5rem"
+          bg="transparent"
+          marginTop="2rem"
+          _focus={{ borderColor: "red.900" }}
+          onClick={logoutHandler}
+        />
+      </Box>
+      <MobileNavbar onOpen={onOpen} />
+      <Flex
+        gap="2rem"
+        mr={{ base: "2rem", md: "7rem" }}
+        ml={{ base: "2rem", md: "0" }}
+        justifyContent="center"
+        overflow="hidden"
+        direction={{ base: "column-reverse", md: "row", lg: "row" }}
+      >
         <Sidebar onOpen={onOpen} />
-        <Flex w="45%" paddingTop="2rem" flexDirection="column" gap="2rem">
+        <Flex
+          w={["100%", "50%", "50%"]}
+          padding="2rem 0 6rem 0"
+          flexDirection="column"
+          gap="2rem"
+        >
           <Box
-            w="60rem"
+            w="100%"
             bg="gray.200"
             cursor="pointer"
             borderRadius="0.5rem"
@@ -65,13 +122,16 @@ export const Homepage = () => {
             onClick={onOpen}
           >
             <Flex alignContent="center" justifyContent="space-between">
-              <Text fontSize="2rem" color="gray.400">
+              <Text
+                fontSize={{ base: "2rem", md: "1.5rem", lg: "2rem" }}
+                color="gray.400"
+              >
                 Post Something Intresting.....
               </Text>
               <IconButton
                 icon={<BsFillPlusCircleFill />}
                 color="blue.600"
-                fontSize="2rem"
+                fontSize={{ base: "2rem", md: "1.5rem", lg: "2rem" }}
                 bg="transparent"
               />
             </Flex>

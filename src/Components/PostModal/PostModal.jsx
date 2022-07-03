@@ -31,7 +31,7 @@ export const PostModal = ({ isOpen, onClose, editPosts, setEditpost }) => {
       dispatch(editPost({ postDetailes, postData, token }));
       setpostData("");
       setEditpost(null);
-      toast.success("post edit successfully.");
+      toast.success("Post edited successfully");
       onClose();
     } else {
       if (postData) {

@@ -5,6 +5,7 @@ import {
   Flex,
   FormControl,
   Heading,
+  Image,
   Input,
   InputGroup,
   InputRightElement,
@@ -15,6 +16,7 @@ import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { NavLink, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
+import { landingpageImage } from "../../Asstes";
 import { signupPage } from "../../Redux/thunks";
 
 export const Signup = () => {
@@ -46,7 +48,9 @@ export const Signup = () => {
             JSON.stringify(response.payload.data.createdUser)
           );
           localStorage.setItem("token", response.payload.data.encodedToken);
-          navigate(location?.state?.from?.pathname|| "/homepage",{replace:true});
+          navigate(location?.state?.from?.pathname || "/homepage", {
+            replace: true,
+          });
           setNewUser({
             username: "",
             firstName: "",
@@ -67,11 +71,17 @@ export const Signup = () => {
   };
 
   return (
-    <Container maxW={"container.lg"} textAlign="center" py={20}>
-      <Flex justifyContent="center">
+    <Container
+      maxW={"container.lg"}
+      py={20}
+      display="flex"
+      justifyContent="space-around"
+      flexDirection="row-reverse"
+    >
+      <Image src={landingpageImage} display={{ base: "none", lg: "block" }} />
+      <Flex>
         <VStack
           w="40rem"
-          fontFamily="cursive"
           p="10"
           borderRadius="0.5rem"
           spacing="5"
@@ -82,14 +92,14 @@ export const Signup = () => {
             fontSize="5xl"
             borderBottom="1px"
             p="2"
-            fontFamily="cursive"
+            fontFamily=" 'Lobster', cursive"
             borderBottomColor="blue.600"
             color="blue.600"
           >
-           FriendlyGalaxy
+            FriendlyGalaxy
           </Heading>
 
-          <Heading fontFamily="cursive">Signup</Heading>
+          <Heading fontFamily=" 'Lobster', cursive">Signup</Heading>
 
           <FormControl>
             <VStack spacing="2rem" p="2rem">

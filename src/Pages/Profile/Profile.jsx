@@ -1,8 +1,10 @@
-import { Text, Flex, useDisclosure } from "@chakra-ui/react";
+import { Text, Flex, useDisclosure, Heading } from "@chakra-ui/react";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import {
   FollowingSuggestions,
+  MobileNavbar,
   PostCard,
   PostModal,
   ProfileEditModal,
@@ -17,6 +19,7 @@ export const Profile = () => {
   const dispatch = useDispatch();
   const { user } = useSelector((state) => state.auth);
   const [editPosts, setEditpost] = useState(null);
+  const navigate=useNavigate()
 
   const userPost = posts.filter(
     (userpost) => userpost.username === user.username
@@ -24,8 +27,8 @@ export const Profile = () => {
 
   useEffect(() => {
     dispatch(getpost());
-    dispatch(getAlluser())
-  },[]);
+    dispatch(getAlluser());
+  }, []);
   const {
     isOpen: isOpenProfile,
     onOpen: onOpenProfile,
@@ -34,16 +37,56 @@ export const Profile = () => {
 
   return (
     <>
-      <PostModal isOpen={isOpen} onClose={onClose} editPosts={editPosts} setEditpost={setEditpost}
-       />
+      <PostModal
+        isOpen={isOpen}
+        onClose={onClose}
+        editPosts={editPosts}
+        setEditpost={setEditpost}
+      />
       <ProfileEditModal
         isOpenProfile={isOpenProfile}
         onCloseProfile={onCloseProfile}
         onOpenProfile={onOpenProfile}
       />
-      <Flex flexWrap="wrap" justifyContent="space-between" mr="2rem">
+      <Flex
+        position="sticky"
+        top="0"
+        zIndex="4"
+        display={{ base: "block", md: "none", lg: "none" }}
+      >
+        <Heading
+          fontSize={{ base: "6xl", md: "4.5xl", lg: "5xl" }}
+          fontFamily=" 'Lobster', cursive"
+          color="blue.600"
+          borderBottom="2px"
+          p="1.5rem"
+          width="100%"
+          bg="gray.200"
+          cursor="pointer"
+          borderBottomColor="blue.400"
+          onClick={()=>navigate("/homepage")}
+
+        >
+          FriendlyGalaxy
+        </Heading>
+      </Flex>
+      <MobileNavbar onOpen={onOpen} />
+      <Flex
+        gap="2rem"
+        mr={{ base: "2rem", md: "7rem" }}
+        ml={{ base: "2rem", md: "2rem" }}
+        justifyContent="center"
+        overflow="hidden"
+        direction={{ base: "column-reverse", md: "row", lg: "row" }}
+      >
         <Sidebar onOpen={onOpen} />
-        <Flex flexDirection="column" gap="2rem" alignItems="center">
+        <Flex
+          w={["100%", "100%", "50%"]}
+          padding="2rem 0 6rem 0"
+          flexDirection="column"
+          gap="2rem"
+        >
+          {" "}
           <UserProfile onOpenProfile={onOpenProfile} />
           {[...userPost].reverse().map((post) => {
             return (

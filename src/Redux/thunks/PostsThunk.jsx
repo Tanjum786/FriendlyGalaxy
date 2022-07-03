@@ -140,7 +140,6 @@ const addCommentspost = createAsyncThunk(
         { headers: { authorization: token } }
       );
       const data = { data: response.data };
-      console.log(response);
       return data;
     } catch (error) {
       return rejectWithValue({ data: error.response.data });

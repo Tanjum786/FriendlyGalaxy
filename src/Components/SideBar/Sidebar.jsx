@@ -10,7 +10,7 @@ import {
 import React from "react";
 import { AiOutlineHome } from "react-icons/ai";
 import { MdOutlineExplore } from "react-icons/md";
-import { FaRegBookmark } from "react-icons/fa";
+import { BsFillBookmarkFill } from "react-icons/bs";
 import { CgProfile } from "react-icons/cg";
 import { FiLogOut } from "react-icons/fi";
 import { useLocation, useNavigate } from "react-router-dom";
@@ -29,17 +29,25 @@ export const Sidebar = ({ onOpen }) => {
   };
   return (
     <Box
-      position="sticky"
-      bottom="0"
+      display={{ base: "none", md: "block",lg:"block" }}
+      w={{ base: "0", md: "20rem", lg: "24rem" }}
+      position={{base:"sticky" ,md:"fixed"}}
       top="0"
+      left="2rem"
       p="5"
       h="fit-content"
-      w="25rem"
-      left="2rem"
     >
       <Flex>
-        <Heading fontSize="5xl" p="3" fontFamily="cursive" color="blue.600">
-        FriendlyGalaxy
+        <Heading
+          fontSize={{ base: "3xl", md: "4.5xl", lg: "5xl" }}
+          p="3"
+          fontFamily=" 'Lobster', cursive"
+          color="blue.600"
+          display={{base:"block"}}
+          cursor="pointer"
+          onClick={()=>navigate("/homepage")}
+        >
+          FriendlyGalaxy
         </Heading>
       </Flex>
       <Flex justifyContent="center">
@@ -92,7 +100,7 @@ export const Sidebar = ({ onOpen }) => {
             bg={`${pathname === "/bookmark" ? "gray.200" : null}`}
             onClick={() => navigate("/bookmark")}
           >
-            <ListIcon as={FaRegBookmark} />
+            <ListIcon as={BsFillBookmarkFill} />
             Bookmark
           </ListItem>
           <ListItem
@@ -131,14 +139,14 @@ export const Sidebar = ({ onOpen }) => {
           </ListItem>
         </UnorderedList>
       </Flex>
-        <Button
+      <Button
         m="6"
         fontSize="2rem"
         p="2rem"
         bg="blue.600"
         colorScheme="blue.600"
         onClick={onOpen}
-        disabled={`${pathname === "/bookmark"}`==="true"?true:false}
+        disabled={`${pathname === "/bookmark"}` === "true" ? true : false}
       >
         Create Post
       </Button>

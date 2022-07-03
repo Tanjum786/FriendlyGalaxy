@@ -5,6 +5,7 @@ import { PostModal } from "./PostModal/PostModal";
 import { UserProfile } from "./UserProfile/UserProfile";
 import { ProfileEditModal } from "./UserProfile/ProfileEditModal";
 import { FollowingSuggestions } from "./UserFollowedSidebar/FollowingSuggestions";
+import { MobileNavbar } from "./SideBar/MobileNavbar";
 export {
   Sidebar,
   UserfollowedSidebar,
@@ -12,5 +13,6 @@ export {
   PostModal,
   UserProfile,
   ProfileEditModal,
-  FollowingSuggestions
+  FollowingSuggestions,
+  MobileNavbar
 };

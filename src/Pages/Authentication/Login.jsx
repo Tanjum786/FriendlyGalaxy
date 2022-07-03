@@ -5,6 +5,7 @@ import {
   Flex,
   FormControl,
   Heading,
+  Image,
   Input,
   InputGroup,
   InputRightElement,
@@ -17,6 +18,7 @@ import { useLocation } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { loginPage } from "../../Redux/thunks";
 import { toast } from "react-toastify";
+import { landingpageImage } from "../../Asstes";
 
 export const Login = () => {
   const [show, setshow] = useState(false);
@@ -45,7 +47,9 @@ export const Login = () => {
           JSON.stringify(response.payload.data.foundUser)
         );
         localStorage.setItem("token", response.payload.data.encodedToken);
-        navigate(location?.state?.from?.pathname || "/homepage",{replace:true}  );
+        navigate(location?.state?.from?.pathname || "/homepage", {
+          replace: true,
+        });
         toast.success("Successfully loged in");
       } else {
         toast.warn("user not found Need to signup first");
@@ -56,11 +60,17 @@ export const Login = () => {
   };
 
   return (
-    <Container maxW={"container.lg"} textAlign="center" py={20}>
+    <Container
+      maxW={"container.lg"}
+      py={20}
+      display="flex"
+      justifyContent="space-around"
+      flexDirection="row-reverse"
+    >
+      <Image src={landingpageImage} display={{ base: "none", lg: "block" }} />
       <Flex py={20} justifyContent="center">
         <VStack
           w="40rem"
-          fontFamily="cursive"
           p="10"
           borderRadius="0.5rem"
           spacing="5"
@@ -71,14 +81,14 @@ export const Login = () => {
             fontSize="5xl"
             borderBottom="1px"
             p="2"
-            fontFamily="cursive"
+            fontFamily=" 'Lobster', cursive"
             borderBottomColor="blue.600"
             color="blue.600"
           >
             FriendlyGalaxy
           </Heading>
 
-          <Heading fontFamily="cursive">Login</Heading>
+          <Heading fontFamily=" 'Lobster', cursive">Login</Heading>
 
           <FormControl>
             <VStack spacing="2rem" p="2rem">
@@ -134,7 +144,7 @@ export const Login = () => {
                 _active={{ bg: "whiteAlpha.600", color: "blackAlpha.900" }}
                 onClick={guestLoginHandler}
               >
-              Enter Guest Credentials
+                Enter Guest Credentials
               </Button>
               <Button
                 w="100%"
@@ -152,7 +162,7 @@ export const Login = () => {
                 Not a user yet ?
                 <NavLink to="/signup">
                   <strong style={{ borderBottom: "2px solid blue" }}>
-                    Creat Account
+                    Create Account
                   </strong>
                 </NavLink>
               </Text>

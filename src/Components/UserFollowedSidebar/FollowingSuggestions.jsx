@@ -5,7 +5,7 @@ import { UserfollowedSidebar } from "./UserfollowedSidebar";
 
 export const FollowingSuggestions = () => {
   const { users } = useSelector((state) => state.user);
-  const { user} = useSelector((state) => state.auth);
+  const { user } = useSelector((state) => state.auth);
 
   const otherUsers = users?.filter(
     (eachUser) => eachUser?.username !== user?.username
@@ -16,17 +16,20 @@ export const FollowingSuggestions = () => {
       <Box>
         <Flex
           bg="gray.200"
-          flexDirection="column"
-          position="sticky"
-          top="3rem"
+          flexDirection={{ base: "row", md: "column", lg: "column" }}
+          overflow={{ base: "scroll", md: "auto", lg: "auto" }}
+          position={{ base: "sticky", md: "fixed",lg:"" }}
+          top="0"
+          right="2rem"
           borderRadius="1rem"
           bottom="0"
           gap="1rem"
           p="2rem"
           mt="3rem"
+          h={{base:"100%",md:"55rem",lg:"55rem"}}
         >
           <Heading
-            fontSize="2rem"
+            fontSize="2.5rem"
             borderBottomColor="blue.300"
             p="3"
             borderBottom="1px"
