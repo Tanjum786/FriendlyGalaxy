@@ -1,8 +1,8 @@
 import { Avatar, Button, Flex, Heading, Text, Box } from "@chakra-ui/react";
-import React, { useEffect } from "react";
+import React from "react";
 import { BiPlus } from "react-icons/bi";
 import { useDispatch, useSelector } from "react-redux";
-import { Followuser, getAlluser, unFollowuser } from "../../Redux/thunks";
+import { Followuser,unFollowuser } from "../../Redux/thunks";
 
 export const UserfollowedSidebar = ({ userData }) => {
   const { user, token } = useSelector((state) => state.auth);
@@ -19,11 +19,10 @@ export const UserfollowedSidebar = ({ userData }) => {
   };
 
   return (
-    <Box key={_id}>
+    <Box key={_id} w="100%">
       <Flex
         justify="space-between"
         alignItems="center"
-        w="31.5rem"
         marginTop="2"
         p="1.5rem"
         borderRadius="1rem"

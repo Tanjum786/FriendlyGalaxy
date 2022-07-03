@@ -92,7 +92,12 @@ export const PostCard = ({ onOpen, post, setEditpost }) => {
     dispatch(deleteCommentpost({ _id, token, commentId }));
   };
   return (
-    <Box bg="gray.200" borderRadius="0.5rem" p="1.5rem" w="60rem">
+    <Box
+      bg="gray.200"
+      borderRadius="0.5rem"
+      p="1.5rem"
+      w="100%"
+    >
       <Flex justifyContent="space-between">
         <Flex gap="2rem">
           <Avatar
@@ -183,7 +188,7 @@ export const PostCard = ({ onOpen, post, setEditpost }) => {
             _focus={{ border: "transparent" }}
           />
           <Text marginTop="0.4rem" fontSize="1.4rem" color="gray.500">
-            BookMarked
+            {!isBookmarked ? "Bookmark" : "Bookmarked"}
           </Text>
         </Flex>
       </Flex>
@@ -209,7 +214,7 @@ export const PostCard = ({ onOpen, post, setEditpost }) => {
               fontSize="1.5rem"
               color="blue.600"
               mt="0.5rem"
-              onClick={addcommentHandler}
+               onClick={addcommentHandler}
             >
               Post
             </Button>

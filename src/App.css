@@ -1,35 +1,33 @@
+@import url('https://fonts.googleapis.com/css2?family=Crimson+Text:ital@1&family=Montserrat:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@1,300&display=swap');
 
-.main-continer{
-    background-color:RGBA(0, 0, 0, 0.04);
-   min-height: 100vh;
+.main-continer {
+    background-color: RGBA(0, 0, 0, 0.04);
+    min-height: 100vh;
 }
 
-:root{
-    --primary-font:"'Playfair Display', serif"
-}
-
-html{
+html {
     font-size: 62.5%;
 }
 
 
 @media screen and (max-width:768px) {
-    html{
+    html {
         font-size: 55%;
     }
-    
+
 }
 
 @media screen and (max-width:425px) {
-    html{
+    html {
         font-size: 45%;
     }
-    
+
 }
 
 @media screen and (max-width:320px) {
-    html{
+    html {
         font-size: 35%;
     }
-    
+
 }

@@ -45,7 +45,6 @@ export const UserProfile = ({ onOpenProfile }) => {
   const existingUser = users?.find(
     (eachuser) => eachuser.username === user.username
   );
-  console.log(existingUser);
   return (
     <Flex
       w="60rem"

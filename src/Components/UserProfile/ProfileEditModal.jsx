@@ -21,6 +21,7 @@ import {
 import { useState } from "react";
 import { AiFillCamera } from "react-icons/ai";
 import { useDispatch, useSelector } from "react-redux";
+import { toast } from "react-toastify";
 import { editUserProfile } from "../../Redux/thunks";
 
 export const ProfileEditModal = ({
@@ -36,6 +37,7 @@ export const ProfileEditModal = ({
   const updateUserdata = () => {
     dispatch(editUserProfile({ userData, token }));
     onCloseProfile();
+    toast.success("Profile edited successfully");
   };
 
   const imageChangeHandaler = (e) => {
@@ -44,7 +46,6 @@ export const ProfileEditModal = ({
     reader.onload = () => {
       if (reader.readyState === 2) {
         setuserData((data) => ({ ...data, profile: reader.result }));
-        console.log(userData.firstName);
         localStorage.setItem("update-image", reader.result);
       }
     };
