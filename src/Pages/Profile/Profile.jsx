@@ -1,6 +1,7 @@
 import { Text, Flex, useDisclosure, Heading } from "@chakra-ui/react";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import {
   FollowingSuggestions,
   MobileNavbar,
@@ -18,6 +19,7 @@ export const Profile = () => {
   const dispatch = useDispatch();
   const { user } = useSelector((state) => state.auth);
   const [editPosts, setEditpost] = useState(null);
+  const navigate=useNavigate()
 
   const userPost = posts.filter(
     (userpost) => userpost.username === user.username
@@ -60,7 +62,10 @@ export const Profile = () => {
           p="1.5rem"
           width="100%"
           bg="gray.200"
+          cursor="pointer"
           borderBottomColor="blue.400"
+          onClick={()=>navigate("/homepage")}
+
         >
           FriendlyGalaxy
         </Heading>

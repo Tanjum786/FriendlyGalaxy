@@ -64,6 +64,9 @@ export const BookMark = () => {
           fontFamily="Crimson Text serif"
           color="blue.600"
           p="1.5rem"
+          cursor="pointer"
+          onClick={()=>navigate("/homepage")}
+
         >
           FriendlyGalaxy
         </Heading>

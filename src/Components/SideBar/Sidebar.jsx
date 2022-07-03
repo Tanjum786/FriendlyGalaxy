@@ -44,6 +44,8 @@ export const Sidebar = ({ onOpen }) => {
           fontFamily="Crimson Text serif"
           color="blue.600"
           display={{base:"block"}}
+          cursor="pointer"
+          onClick={()=>navigate("/homepage")}
         >
           FriendlyGalaxy
         </Heading>

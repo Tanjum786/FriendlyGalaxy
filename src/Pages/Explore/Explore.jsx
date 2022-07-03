@@ -59,6 +59,7 @@ export const Explore = () => {
         width="100%"
         bg="gray.200"
         borderBottom="2px"
+        cursor="pointer"
         justifyContent="space-between"
         borderBottomColor="blue.400"
       >
@@ -67,6 +68,7 @@ export const Explore = () => {
           fontFamily="Crimson Text serif"
           color="blue.600"
           p="1.5rem"
+          onClick={()=>navigate("/homepage")}
         >
           FriendlyGalaxy
         </Heading>
