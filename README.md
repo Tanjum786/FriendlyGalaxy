@@ -1,5 +1,5 @@
 # [FriendlyGalaxy](https://friendly-galaxy.vercel.app/)
-FriendlyGalaxyis is social media app where user can create accound and follow other users.
+FriendlyGalaxyis is social media app where user can create account and follow other users.
 
 ## Technologies used 
 - React JS
